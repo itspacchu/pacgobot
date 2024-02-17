@@ -29,4 +29,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/itspacchu/pacgobot:${{ github.workflow_sha }},ghcr.io/itspacchu/pacgobot:latest
+        tags: ghcr.io/itspacchu/pacgobot:latest
