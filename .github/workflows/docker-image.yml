@@ -12,8 +12,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-      name: Build the Docker image
-      run: docker build . --file Dockerfile --tag ghcr.io/itspacchu/pacgobot:$(date +%s)
+      name: checkout
     
     - uses: docker/login-action@v1
       name: Login into Github Registry
@@ -22,5 +21,9 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Push Docker image
-      run: docker push ghcr.io/itspacchu/pacgobot:$(date +%s)
+    - uses: docker/build-push-action@v2
+      name: Push Docker image
+      with:
+        context: .
+        push: true
+        tags: ghcr.io/itspacchu/pacgobot:$(date +%s)
