@@ -18,15 +18,14 @@ jobs:
       name: checkout
     
     - uses: docker/login-action@v1
-      name: Login into Github Registry
+      name: Login into GitHub Registry
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - uses: docker/build-push-action@v2
-      name: Push Docker image
-      with:
-        context: .
-        push: true
-        tags: ghcr.io/itspacchu/pacgobot:latest
+    - name: Build ARM64 Docker image
+      run: docker build -t ghcr.io/itspacchu/pacgobot:latest-arm64 --platform linux/arm64 .
+
+    - name: Push ARM64 Docker image
+      run: docker push ghcr.io/itspacchu/pacgobot:latest-arm64
