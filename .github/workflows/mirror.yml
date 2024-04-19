@@ -14,8 +14,8 @@ jobs:
         args: "https://code.swecha.org/pacchu/pacgobot"
       env:
         FORCE_PUSH: "true"
-        GITLAB_HOSTNAME: "gitlab.com"
-        GITLAB_USERNAME: "itspacchu"
+        GITLAB_HOSTNAME: "code.swecha.org"
+        GITLAB_USERNAME: "pacchu"
         GITLAB_PASSWORD: ${{ secrets.SWECHA_GITLAB_PASSWORD }}
-        GITLAB_PROJECT_ID: "42900035"
+        GITLAB_PROJECT_ID: "13579"
         GITHUB_TOKEN: ${{ secrets.SWECHA_GITHUB_TOKEN }}
